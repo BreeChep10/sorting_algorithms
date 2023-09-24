@@ -43,7 +43,7 @@ void cocktail_sort_list(listint_t **Head)
 	listint_t *head, *copy, *new;
 
 	if (!Head || !(*Head) || !(*Head)->next)
-		(return);
+		return;
 
 	head = new = *Head, start = end = 0, traverser = 1;
 	while (true)
