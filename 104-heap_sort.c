@@ -1,58 +1,66 @@
 #include "sort.h"
 
 /**
- *heap_tree - uses the heap technique to sort
- *@array: array to sort
- *@size: the size of the array
- *@index: the value index to compare and swap
- *@n: the innitial size of the array
- *Return: nothing
+ * heap_tree - Perform a sift-down operation to maintain the heap property.
+ * @array: The array to heapify.
+ * @n: The size of the array.
+ * @size: The total size of the heap.
+ * @index: The index to start the sift-down operation.
  */
 void heap_tree(int *array, size_t n, size_t size, size_t index)
 {
 	size_t s1, s2;
 	int val1, val2, tmp;
 
-	s1 = index * 2 + 1, s2 = s1 + 1;
-	val1 = array[s1], val2 = array[s2];
+	s1 = 2 * index + 1;
+	s2 = 2 * index + 2;
+	val1 = (s1 < size) ? array[s1] : INT_MIN;
+	val2 = (s2 < size) ? array[s2] : INT_MIN;
 
-	if ((s1 < size && s2 < size && val1 >= val2 && val1 > array[index])
-	    || (s1 + 1 == size && val1 > array[index]))
+	if (val1 > val2 && val1 > array[index])
 	{
-		tmp = array[index], array[index] = array[s1], array[s1] = tmp;
+		tmp = array[index];
+		array[index] = array[s1];
+		array[s1] = tmp;
 		print_array(array, n);
-	}
-	else if ((s1 < size && s2 < size && val2 > val1 && val2 > array[index]))
-	{
-		tmp = array[index], array[index] = array[s2], array[s2] = tmp;
-		print_array(array, n);
-	}
-	if (s1 < size - 1)
 		heap_tree(array, n, size, s1);
-	if (s2 < size - 1)
+	}
+	else if (val2 > val1 && val2 > array[index])
+	{
+		tmp = array[index];
+		array[index] = array[s2];
+		array[s2] = tmp;
+		print_array(array, n);
 		heap_tree(array, n, size, s2);
+	}
 }
 
-
 /**
- *heap_sort - performs a sift-down heap sort
- *@array: the array to sort
- *@size: the size of the array
- *Return: nothing
+ * heap_sort - Sort an array of integers using the Heap Sort algorithm.
+ * @array: The array to be sorted.
+ * @size: The size of the array.
  */
 void heap_sort(int *array, size_t size)
 {
-	size_t i;
-	int tmp;
+	int i, tmp;
 
-	if (!array)
+	if (!array || size < 2)
 		return;
-	for (i = 0; i < size / 2; i++)
-		heap_tree(array, size, size, size / 2 - 1 - i);
-	for (i = 0; i < size; i++)
+
+
+	for (i = size / 2 - 1; i >= 0; i--)
+		heap_tree(array, size, size, (size_t)i);
+
+
+	for (i = size - 1; i > 0; i--)
 	{
-		tmp = array[0], array[0] = array[size - 1 - i];
-		array[size - 1 - i] = tmp, print_array(array, size);
-		heap_tree(array, size, size - 1 - i, 0);
+
+		tmp = array[0];
+		array[0] = array[i];
+		array[i] = tmp;
+		print_array(array, size);
+
+
+		heap_tree(array, size, i, 0);
 	}
 }
