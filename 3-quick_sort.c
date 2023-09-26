@@ -17,17 +17,15 @@ int partition(int *array, int low, int high, size_t size)
 
 	while (1)
 	{
-		do
-		{
+		do {
 			i++;
 		} while (array[i] < pivot);
-		do
-		{
+		do {
 			j--;
 		} while (array[j] > pivot);
 
 		if (i >= j)
-			return j;
+			return (j);
 
 
 		temp = array[i];
@@ -56,6 +54,7 @@ void quicksort(int *array, int low, int high, size_t size)
 	if (low < high)
 	{
 		int pivot = partition(array, low, high, size);
+
 		quicksort(array, low, pivot, size);
 		quicksort(array, pivot + 1, high, size);
 	}
@@ -69,7 +68,7 @@ void quicksort(int *array, int low, int high, size_t size)
 void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
-		return;
+		(return);
 
 	quicksort(array, 0, size - 1, size);
 }
