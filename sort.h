@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+
 /*data structure*/
 
 /**
@@ -38,6 +39,6 @@ void paste(int *src, int *dest, size_t n);
 void divide_conquer(int *array, int *tmp, int min, int max, size_t n);
 void sort(int *array, int l_min, int l_max, int r_min, int r_max, int *tmp);
 void display(int *array, int min, int max);
-
+void heap_sort(int *array, size_t size);
 
 #endif /*LEEBREE*/
