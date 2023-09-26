@@ -44,5 +44,6 @@ void heap_tree(int *array, size_t n, size_t size, size_t index);
 int partition(int *array, int low, int high, size_t size);
 void quicksort(int *array, int low, int high, size_t size);
 void quick_sort(int *array, size_t size);
+void counting_sort(int *array, size_t size);
 
 #endif /*LEEBREE*/
