@@ -27,9 +27,9 @@ void heap_tree(int *array, size_t n, size_t size, size_t index)
 		tmp = array[index], array[index] = array[s2], array[s2] = tmp;
 		print_array(array, n);
 	}
-	if (s1 < size)
+	if (s1 < size - 1)
 		heap_tree(array, n, size, s1);
-	if (s2 < size)
+	if (s2 < size - 1)
 		heap_tree(array, n, size, s2);
 }
 
