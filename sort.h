@@ -40,5 +40,6 @@ void divide_conquer(int *array, int *tmp, int min, int max, size_t n);
 void sort(int *array, int l_min, int l_max, int r_min, int r_max, int *tmp);
 void display(int *array, int min, int max);
 void heap_sort(int *array, size_t size);
+void heap_tree(int *array, size_t n, size_t size, size_t index);
 
 #endif /*LEEBREE*/
