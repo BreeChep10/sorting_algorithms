@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "sort.h"
 
 /**
  * partition - Partitions an array using Hoare's scheme.
@@ -68,7 +68,7 @@ void quicksort(int *array, int low, int high, size_t size)
 void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
-		(return);
+		return;
 
 	quicksort(array, 0, size - 1, size);
 }
