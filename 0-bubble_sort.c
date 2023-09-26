@@ -1,4 +1,4 @@
-#include "sort.h"
+#include <stdio.h>
 
 /**
  * swap - Function that swaps the numbers.
@@ -23,27 +23,36 @@ void swap(int *x, int *y)
 
 void bubble_sort(int *array, size_t size)
 {
-    size_t i, j;
-    int swapped;
+	size_t i, j, k;
+	int swapped;
 
-    for (i = 0; i < size - 1; i++)
-    {
-        swapped = 0;
-        for (j = 0; j < size - i - 1; j++)
-        {
-            if (array[j] > array[j + 1])
-            {
-                int temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
-                swapped = 1;
-                print_array(array, size);
-            }
-        }
+	if (!array || size == 0)
+		return;
 
-        if (swapped == 0)
-        {
-            break;
-        }
-    }
+	for (i = 0; i < size - 1; i++)
+	{
+		swapped = 0;
+		for (j = 0; j < size - i - 1; j++)
+		{
+			if (array[j] > array[j + 1])
+			{
+				swap(&array[j], &array[j + 1]);
+				swapped = 1;
+				/* Print the array after each swap */
+				for (k = 0; k < size; k++)
+				{
+					printf("%d", array[k]);
+					if (k < size - 1)
+					{
+						printf(", ");
+					}
+				}
+				printf("\n");
+			}
+		}
+		if (swapped == 0)
+		{
+			break;
+		}
+	}
 }
